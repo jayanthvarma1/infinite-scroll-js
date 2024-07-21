@@ -7,9 +7,9 @@ let totalImages = 0;
 let photosArray = [];
 
 // Unsplash API
-const count = 10;
-const apiKey = 'ldB22Ry7mgnr2mwC_HamfK9537BHGJr6gq2dINeogz4';
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
+let count = 5;
+const apiKey = 'add-your=api-key';
+let apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 // Helper funciton to set attributes on DOM Elements.
 function setAttributes(element, attributes) {
@@ -45,6 +45,7 @@ function displayPhotos() {
       if (imagesLoaded === totalImages) {
         ready = true;
         loader.hidden = true;
+        count = 10;
       }
     });
     // Put <img> in <a> and put both in imageContainer
@@ -58,6 +59,7 @@ async function getPhotos() {
   try {
     const response = await fetch(apiURL);
     photosArray = await response.json();
+    console.log(photosArray);
     displayPhotos();
   } catch (error) {
     // Catch Error
